@@ -1,3 +1,5 @@
+%global tools webp-tools
+
 Name:          libwebp
 Version:       0.6.1
 Release:       1
@@ -19,10 +21,11 @@ container based on RIFF. Webmasters, web developers and browser
 developers can use WebP to compress, archive and distribute digital
 images more efficiently.
 
-%package tools
+%package -n %{tools}
 Summary:       The WebP command line tools
+Requires:      %{name} = %{version}-%{release}
 
-%description tools
+%description -n %{tools}
 WebP is an image format that does lossy compression of digital
 photographic images. WebP consists of a codec based on VP8, and a
 container based on RIFF. Webmasters, web developers and browser
@@ -63,7 +66,7 @@ find "%{buildroot}/%{_libdir}" -type f -name "*.la" -delete
 
 %postun -n %{name} -p /sbin/ldconfig
 
-%files tools
+%files -n %{tools}
 %{_bindir}/cwebp
 %{_bindir}/dwebp
 %{_bindir}/gif2webp
