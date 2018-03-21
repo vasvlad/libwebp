@@ -1,0 +1,13 @@
+diff --git a/src/dsp/dsp.h b/src/dsp/dsp.h
+index 99eefe09..9e9f9764 100644
+--- a/src/dsp/dsp.h
++++ b/src/dsp/dsp.h
+@@ -83,7 +83,7 @@ extern "C" {
+ // The intrinsics currently cause compiler errors with arm-nacl-gcc and the
+ // inline assembly would need to be modified for use with Native Client.
+ #if (defined(__ARM_NEON__) || \
+-     defined(__aarch64__) || defined(WEBP_HAVE_NEON)) && \
++     defined(WEBP_HAVE_NEON)) && \
+     !defined(__native_client__)
+ #define WEBP_USE_NEON
+ #endif
