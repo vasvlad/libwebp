@@ -8,6 +8,8 @@ Summary:       Library and tools for the WebP graphics format
 License:       BSD
 Source0:       http://downloads.webmproject.org/releases/webp/%{name}-%{version}.tar.gz
 
+Patch1:        libwebp_fix_arm64build.patch 
+
 BuildRequires: libjpeg-devel
 BuildRequires: libpng-devel
 BuildRequires: giflib-devel
@@ -45,6 +47,8 @@ images more efficiently.
 
 %prep
 %setup -q -n %{name}-%{version}/%{name}
+
+%patch1 -p1
 
 %build
 autoreconf -vfi
