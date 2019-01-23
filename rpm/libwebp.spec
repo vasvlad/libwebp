@@ -45,6 +45,13 @@ container based on RIFF. Webmasters, web developers and browser
 developers can use WebP to compress, archive and distribute digital
 images more efficiently.
 
+%package doc
+Summary:   Documentation for %{name} and %{tools}
+Requires:  %{name} = %{version}-%{release}
+
+%description doc
+Man pages for %{name} and %{tools}.
+
 %prep
 %setup -q -n %{name}-%{version}/%{name}
 
@@ -66,6 +73,10 @@ export CFLAGS="%{optflags} -frename-registers"
 %make_install
 find "%{buildroot}/%{_libdir}" -type f -name "*.la" -delete
 
+mkdir -p %{buildroot}%{_docdir}/%{name}-%{version}
+install -m0644 -t %{buildroot}%{_docdir}/%{name}-%{version} \
+        PATENTS NEWS README AUTHORS COPYING
+
 %post -n %{name} -p /sbin/ldconfig
 
 %postun -n %{name} -p /sbin/ldconfig
@@ -77,18 +88,20 @@ find "%{buildroot}/%{_libdir}" -type f -name "*.la" -delete
 %{_bindir}/img2webp
 %{_bindir}/webpinfo
 %{_bindir}/webpmux
-%{_mandir}/man*/*
 
 %files
-%doc PATENTS NEWS COPYING
+%license COPYING
 %{_libdir}/%{name}.so.7*
 %{_libdir}/%{name}decoder.so.3*
 %{_libdir}/%{name}demux.so.2*
 %{_libdir}/%{name}mux.so.3*
 
 %files devel
-%doc README AUTHORS COPYING
 %{_libdir}/%{name}*.so
 %{_includedir}/*
 %{_libdir}/pkgconfig/*
 
+%files doc
+%defattr(-,root,root,-)
+%{_mandir}/man1/*webp*
+%{_docdir}/%{name}-%{version}
