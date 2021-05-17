@@ -1,14 +1,12 @@
 %global tools webp-tools
 
 Name:          libwebp
-Version:       0.6.1
+Version:       1.2.0
 Release:       1
 URL:           http://webmproject.org/
 Summary:       Library and tools for the WebP graphics format
 License:       BSD
 Source0:       http://downloads.webmproject.org/releases/webp/%{name}-%{version}.tar.gz
-
-Patch1:        libwebp_fix_arm64build.patch 
 
 BuildRequires: libjpeg-devel
 BuildRequires: libpng-devel
@@ -53,9 +51,7 @@ Requires:  %{name} = %{version}-%{release}
 Man pages for %{name} and %{tools}.
 
 %prep
-%setup -q -n %{name}-%{version}/%{name}
-
-%patch1 -p1
+%autosetup -n %{name}-%{version}/%{name}
 
 %build
 autoreconf -vfi
