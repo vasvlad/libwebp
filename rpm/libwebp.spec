@@ -3,10 +3,10 @@
 Name:          libwebp
 Version:       1.2.0
 Release:       1
-URL:           http://webmproject.org/
+URL:           https://github.com/sailfishos/libwebp
 Summary:       Library and tools for the WebP graphics format
 License:       BSD
-Source0:       http://downloads.webmproject.org/releases/webp/%{name}-%{version}.tar.gz
+Source0:       %{name}-%{version}.tar.gz
 
 BuildRequires: libjpeg-devel
 BuildRequires: libpng-devel
