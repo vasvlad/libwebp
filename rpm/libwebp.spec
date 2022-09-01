@@ -1,7 +1,7 @@
 %global tools webp-tools
 
 Name:          libwebp
-Version:       1.2.0
+Version:       1.2.4
 Release:       1
 URL:           https://github.com/sailfishos/libwebp
 Summary:       Library and tools for the WebP graphics format
@@ -63,7 +63,7 @@ export CFLAGS="%{optflags} -frename-registers"
 %configure --disable-static --enable-libwebpmux \
            --enable-libwebpdemux --enable-libwebpdecoder \
            --disable-neon
-%{__make} %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
@@ -71,7 +71,7 @@ find "%{buildroot}/%{_libdir}" -type f -name "*.la" -delete
 
 mkdir -p %{buildroot}%{_docdir}/%{name}-%{version}
 install -m0644 -t %{buildroot}%{_docdir}/%{name}-%{version} \
-        PATENTS NEWS README AUTHORS COPYING
+        PATENTS NEWS README.md AUTHORS COPYING
 
 %post -n %{name} -p /sbin/ldconfig
 
