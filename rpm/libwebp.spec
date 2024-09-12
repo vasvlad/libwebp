@@ -1,7 +1,7 @@
 %global tools webp-tools
 
 Name:          libwebp
-Version:       1.3.2
+Version:       1.4.0
 Release:       1
 URL:           https://github.com/sailfishos/libwebp
 Summary:       Library and tools for the WebP graphics format
@@ -100,6 +100,5 @@ install -m0644 -t %{buildroot}%{_docdir}/%{name}-%{version} \
 %{_libdir}/pkgconfig/*
 
 %files doc
-%defattr(-,root,root,-)
 %{_mandir}/man1/*webp*
 %{_docdir}/%{name}-%{version}
