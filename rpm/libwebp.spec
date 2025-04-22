@@ -66,6 +66,7 @@ Man pages for %{name} and %{tools}.
 %autosetup -n %{name}-%{version}/%{name}
 
 %build
+export CFLAGS="$RPM_OPT_FLAGS -fPIC"
 autoreconf -vfi
 %ifarch aarch64
 export CFLAGS="%{optflags} -frename-registers"
